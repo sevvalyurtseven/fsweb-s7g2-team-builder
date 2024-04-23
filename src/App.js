@@ -14,6 +14,7 @@ function App() {
       email: "john@example.com",
       rol: "Frontend Developer",
       img: "https://picsum.photos/200/300",
+      terms: true,
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ function App() {
       email: "jane@example.com",
       rol: "Frontend Developer",
       img: "https://picsum.photos/200/300",
+      terms: true,
     },
     {
       id: 3,
@@ -28,12 +30,14 @@ function App() {
       email: "jim@example.com",
       rol: "Frontend Developer",
       img: "https://picsum.photos/200/300",
+      terms: true,
     },
   ];
   const formDataInitials = {
     name: "",
     email: "",
     rol: "",
+    terms: false,
   };
   const [formData, setFormData] = useState(formDataInitials);
   const [members, setMembers] = useState(membersInitials);
