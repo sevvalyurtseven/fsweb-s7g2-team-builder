@@ -12,8 +12,9 @@ const Members = ({ members, editMember }) => {
   //console.log(members);
   return (
     <div style={{ textAlign: "center" }}>
-      {members.map((member) => (
+      {members.map((member, index) => (
         <Card
+          key={index}
           style={{
             width: "20rem",
             display: "inline-block",
