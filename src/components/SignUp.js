@@ -14,8 +14,9 @@ const SignUp = ({ submitHandler, changeHandler, formData }) => {
       >
         <Form onSubmit={submitHandler}>
           <FormGroup>
-            <Label>Name</Label>
+            <Label for="name">Name</Label>
             <Input
+              id="name"
               type="text"
               name="name"
               placeholder="İsim Giriniz"
@@ -24,8 +25,9 @@ const SignUp = ({ submitHandler, changeHandler, formData }) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label>Rol</Label>
+            <Label for="rol">Rol</Label>
             <Input
+              id="rol"
               type="text"
               name="rol"
               placeholder="Rol Giriniz"
@@ -34,8 +36,9 @@ const SignUp = ({ submitHandler, changeHandler, formData }) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label>E-mail</Label>
+            <Label for="email">E-mail</Label>
             <Input
+              id="email"
               type="email"
               name="email"
               placeholder="johndoe@me.com"
