@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "reactstrap";
 
-const Members = ({ members }) => {
+const Members = ({ members, editMember }) => {
   //console.log(members);
   return (
     <div style={{ textAlign: "center" }}>
@@ -34,7 +34,9 @@ const Members = ({ members }) => {
               {member.rol}
             </CardSubtitle>
             <CardText>{member.email}</CardText>
-            <Button color="primary">Detay</Button>
+            <Button color="primary" onClick={() => editMember(member)}>
+              Edit
+            </Button>
           </CardBody>
         </Card>
       ))}
