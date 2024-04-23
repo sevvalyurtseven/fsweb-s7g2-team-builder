@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import * as Yup from "yup";
 
 const SignUp = ({ submitHandler, changeHandler, formData }) => {
+  //States of form
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState({
     name: "",
@@ -10,6 +11,7 @@ const SignUp = ({ submitHandler, changeHandler, formData }) => {
     rol: "",
     terms: "",
   });
+
   //Form Validation
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -19,6 +21,15 @@ const SignUp = ({ submitHandler, changeHandler, formData }) => {
     email: Yup.string().email("Invalid email").required("Email is required"),
     terms: Yup.boolean().oneOf([true], "You must accept the terms"),
   });
+
+  //useEffect ile formdaki verilerin dogrulugunu kontrol ediyoruz
+
+  useEffect(() => {
+    validationSchema.isValid(formData).then((valid) => {
+      setIsValid(valid);
+    });
+  }, [formData]);
+
   return (
     <div style={{ padding: "40px" }}>
       <h1 style={{ textAlign: "center" }}>Sign Up Form</h1>
