@@ -34,7 +34,8 @@ function App() {
   const [formData, setFormData] = useState(formDataInitials);
   const [members, setMembers] = useState(membersInitials);
 
-  const submitHandler = () => {
+  const submitHandler = (event) => {
+    event.preventDefault();
     const newMember = {
       ...formData,
       ["img"]: "https://picsum.photos/200/300",
