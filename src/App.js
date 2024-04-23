@@ -1,9 +1,10 @@
 import "./App.css";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Members from "./components/Members";
 import SignUp from "./components/SignUp";
 import { useState } from "react";
 import Header from "./components/Header";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const membersInitials = [
@@ -34,6 +35,8 @@ function App() {
   const [formData, setFormData] = useState(formDataInitials);
   const [members, setMembers] = useState(membersInitials);
 
+  let history = useHistory();
+
   const submitHandler = (event) => {
     event.preventDefault();
     const newMember = {
@@ -43,6 +46,7 @@ function App() {
     setMembers([...members, newMember]);
     //form submit edildikten sonra formu resetler
     setFormData(formDataInitials);
+    history.push("/");
   };
 
   const changeHandler = (event) => {
