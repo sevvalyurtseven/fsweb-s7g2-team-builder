@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import * as Yup from "yup";
 
 const SignUp = ({ submitHandler, changeHandler, formData }) => {
+  const [isValid, setIsValid] = useState(false);
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    rol: "",
+    terms: "",
+  });
+  //Form Validation
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required("Name is required")
