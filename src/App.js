@@ -6,9 +6,24 @@ import { useState } from "react";
 
 function App() {
   const membersInitials = [
-    { name: "John", email: "john@example.com", rol: "Frontend Developer" },
-    { name: "Jane", email: "jane@example.com", rol: "Frontend Developer" },
-    { name: "Jim", email: "jim@example.com", rol: "Frontend Developer" },
+    {
+      name: "John",
+      email: "john@example.com",
+      rol: "Frontend Developer",
+      img: "https://picsum.photos/200/300",
+    },
+    {
+      name: "Jane",
+      email: "jane@example.com",
+      rol: "Frontend Developer",
+      img: "https://picsum.photos/200/300",
+    },
+    {
+      name: "Jim",
+      email: "jim@example.com",
+      rol: "Frontend Developer",
+      img: "https://picsum.photos/200/300",
+    },
   ];
   const formDataInitials = {
     name: "",
@@ -19,7 +34,13 @@ function App() {
   const [members, setMembers] = useState(membersInitials);
 
   const submitHandler = () => {
-    setMembers([...members, formData]);
+    const newMember = {
+      ...formData,
+      ["img"]: "https://picsum.photos/200/300",
+    };
+    setMembers([...members, newMember]);
+    //form submit edildikten sonra formu resetler
+    setFormData(formDataInitials);
   };
 
   const changeHandler = (event) => {
@@ -35,7 +56,11 @@ function App() {
           <Members />
         </Route>
         <Route path="/signup" exact>
-          <SignUp submitHandler={submitHandler} changeHandler={changeHandler} />
+          <SignUp
+            submitHandler={submitHandler}
+            changeHandler={changeHandler}
+            formData={formData}
+          />
         </Route>
       </Switch>
     </div>
