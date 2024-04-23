@@ -46,10 +46,11 @@ const SignUp = ({ submitHandler, changeHandler, formData }) => {
               onChange={changeHandler}
             />
           </FormGroup>
-
-          <Button color="primary" type="submit">
-            Submit
-          </Button>
+          <FormGroup className="text-center">
+            <Button color="primary" type="submit">
+              Submit
+            </Button>
+          </FormGroup>
         </Form>
       </div>
     </div>
