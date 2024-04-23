@@ -1,8 +1,9 @@
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 import Members from "./components/Members";
 import SignUp from "./components/SignUp";
 import { useState } from "react";
+import Header from "./components/Header";
 
 function App() {
   const membersInitials = [
@@ -51,9 +52,10 @@ function App() {
   };
   return (
     <div>
+      <Header />
       <Switch>
         <Route path="/" exact>
-          <Members />
+          <Members members={members} />
         </Route>
         <Route path="/signup" exact>
           <SignUp
