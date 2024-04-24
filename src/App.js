@@ -107,7 +107,9 @@ function App() {
     Yup.reach(validationSchema, name)
       .validate(value)
       .then((response) => setErrors({ ...errors, [name]: "" }))
-      .catch((error) => setErrors({ ...errors, [name]: error.errors[0] }));
+      .catch((error) =>
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: error.errors[0] }))
+      );
   };
 
   const editMember = (member) => {
