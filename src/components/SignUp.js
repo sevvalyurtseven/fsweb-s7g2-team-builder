@@ -1,5 +1,12 @@
 import { useEffect } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormFeedback,
+  FormGroup,
+  Input,
+  Label,
+} from "reactstrap";
 
 const SignUp = ({
   submitHandler,
@@ -29,7 +36,9 @@ const SignUp = ({
               placeholder="İsim Giriniz"
               value={formData.name}
               onChange={changeHandler}
+              invalid={!!errors.name}
             />
+            <FormFeedback>{errors.name}</FormFeedback>
           </FormGroup>
           <FormGroup>
             <Label for="rol">Rol</Label>
@@ -40,7 +49,9 @@ const SignUp = ({
               placeholder="Rol Giriniz"
               value={formData.rol}
               onChange={changeHandler}
+              invalid={!!errors.rol}
             />
+            <FormFeedback>{errors.rol}</FormFeedback>
           </FormGroup>
           <FormGroup>
             <Label for="email">E-mail</Label>
@@ -51,7 +62,9 @@ const SignUp = ({
               placeholder="johndoe@me.com"
               value={formData.email}
               onChange={changeHandler}
+              invalid={!!errors.email}
             />
+            <FormFeedback>{errors.email}</FormFeedback>
           </FormGroup>
           <FormGroup check>
             <Label for="terms">
@@ -61,12 +74,14 @@ const SignUp = ({
                 name="terms"
                 checked={formData.terms}
                 onChange={changeHandler}
+                invalid={!!errors.terms}
               />
               I accept terms and conditions
             </Label>
+            <FormFeedback>{errors.terms}</FormFeedback>
           </FormGroup>
           <FormGroup className="text-center">
-            <Button color="primary" type="submit">
+            <Button color="primary" type="submit" disabled={!isValid}>
               Submit
             </Button>
           </FormGroup>
