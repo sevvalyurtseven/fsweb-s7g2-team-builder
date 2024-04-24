@@ -1,35 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import * as Yup from "yup";
 
-const SignUp = ({ submitHandler, changeHandler, formData }) => {
-  //States of form
-  const [isValid, setIsValid] = useState(false);
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    rol: "",
-    terms: "",
-  });
-
-  //Form Validation
-  const validationSchema = Yup.object().shape({
-    name: Yup.string()
-      .required("Name is required")
-      .min(3, "Name must be at least 3 characters"),
-    rol: Yup.string().required("Rol is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    terms: Yup.boolean().oneOf([true], "You must accept the terms"),
-  });
-
-  //useEffect ile formdaki verilerin dogrulugunu kontrol ediyoruz
-
-  useEffect(() => {
-    validationSchema.isValid(formData).then((valid) => {
-      setIsValid(valid);
-    });
-  }, [formData]);
-
+const SignUp = ({
+  submitHandler,
+  changeHandler,
+  formData,
+  errors,
+  isValid,
+}) => {
   return (
     <div style={{ padding: "40px" }}>
       <h1 style={{ textAlign: "center" }}>Sign Up Form</h1>
